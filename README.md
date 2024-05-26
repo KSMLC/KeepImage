@@ -45,3 +45,8 @@ KeepImage 是一个使用 Tkinter 和 Tinify API 的简单图像压缩工具，�
 可以通过以下命令安装依赖：
 ```bash
 pip install tkinter Pillow tinify tkinterdnd2
+```
+
+## 图片
+
+![image](https://raw.githubusercontent.com/KSMLC/PhotoGallery/main/image/2024/05/26/16_41_46.png)
