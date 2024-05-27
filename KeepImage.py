@@ -5,9 +5,12 @@ from tkinterdnd2 import DND_FILES, TkinterDnD
 import tinify
 from PIL import Image, ImageTk
 import os
+import sys
 
+# 设置证书路径，不然打包运行报错
+os.environ['REQUESTS_CA_BUNDLE'] =  os.path.join(os.path.dirname(sys.argv[0]), 'cacert.pem')
 # 设置 Tinify API 密钥
-tinify.key = ""
+tinify.key = "YOUR_API_KEY"
 
 def select_files():
     file_paths = filedialog.askopenfilenames(
