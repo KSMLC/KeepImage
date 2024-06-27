@@ -66,4 +66,4 @@ pip install tkinter Pillow tinify tkinterdnd2
 
 ## 图片
 
-![image](https://raw.githubusercontent.com/KSMLC/PhotoGallery/main/image/2024/05/26/16_41_46.png)
+![image-20240627225629008](https://alist.ksmlc.cn/d/Private/Cloudreve/图片/202406272256919.png)
