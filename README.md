@@ -1,69 +1,67 @@
-# KeepImage
+# 图像压缩器
 
-KeepImage 是一个使用 Tkinter 和 Tinify API 的简单图像压缩工具，支持拖放和批量压缩图像。
+## 简介
+这是一个使用 Python 编写的图像压缩工具，通过 `tkinter` 库构建图形用户界面（GUI），支持用户选择本地图像文件或者通过拖放的方式添加图像，并使用 `tinify` 库对图像进行压缩处理。
 
-## 功能
+## 依赖库
+- `tkinter`
+- `filedialog`
+- `messagebox`
+- `ttk`
+- `tkinterdnd2`
+- `tinify`
+- `PIL`
+- `os`
+- `sys`
 
-- 选择单个或多个图像文件进行压缩
-- 支持拖放文件进行选择
-- 实时显示正在处理的图像
-- 进度条显示压缩进度
-- 压缩完成后提示
-- 自动创建输出文件夹（如果不存在）
-- 清空选择的图像列表
+## 环境设置
+在运行代码前，请确保您已经安装了上述依赖库。
 
-## 支持的文件格式
+### 设置证书路径
+为了避免打包运行时出现错误，需要设置证书路径：
 
-- JPEG (.jpg, .jpeg)
-- PNG (.png)
-- WebP (.webp)
-
-## 使用
-
-1. 在 `KeepImage.py` 文件中设置你的 Tinify API 密钥
-
-    API获取：[TinyPNG – 开发者API (tinify.cn)](https://tinify.cn/developers)
-
-    ```python
-    tinify.key = "YOUR_API_KEY"
-    ```
-
-2. 运行脚本
-    ```bash
-    python KeepImage.py
-    ```
-
-3. 使用界面选择或拖放图像文件，点击“压缩图像”按钮进行压缩。
-
-## 打包运行
-
-1. 使用`pyinstaller`进行打包例如：
-
-   ```
-   pyinstaller --onefile --console --name=KeepImage --upx-dir="E:\Program Files (x86)\upx-4.2.3-win64" --collect-all "tkinterdnd2" ./KeepImage.py
-   ```
-
-   其中`--upx-dir`为可选，打包必须加入`--collect-all "tkinterdnd2"`避免运行报错
-
-2. 如果遇到证书问题需要将`cacert.pem`文件保存在打包后的exe目录下才能避免运行报错，如果不想保存在exe同级目录下请将`cacert.pem`保存到你想要的位置并修改下列代码：
-
-3. ```
-   # 设置证书路径，不然打包运行报错
-   os.environ['REQUESTS_CA_BUNDLE'] =  os.path.join(os.path.dirname(sys.argv[0]), 'cacert.pem')
-   ```
-
-## 依赖
-
-- `tkinter`：用于创建 GUI
-- `tinify`：用于图像压缩
-- `Pillow`：用于图像处理
-- `tkinterdnd2`：用于拖放功能
-
-可以通过以下命令安装依赖：
-```bash
-pip install tkinter Pillow tinify tkinterdnd2
+```python
+os.environ['REQUESTS_CA_BUNDLE'] =  os.path.join(os.path.dirname(sys.argv[0]), 'cacert.pem')
 ```
+
+### 设置 Tinify API 密钥
+您需要获取 `Tinify` 的 API 密钥，并在代码中设置：
+
+API获取：[TinyPNG – 开发者API (tinify.cn)](https://gitee.com/link?target=https%3A%2F%2Ftinify.cn%2Fdevelopers)
+
+```python
+tinify.key = "YOUR_API_KEY"
+```
+
+## 功能说明
+
+### 选择文件
+通过点击“浏览”按钮，可以选择要压缩的图像文件。支持的文件类型包括 `.jpg`、`.jpeg`、`.png` 和 `.webp`。
+
+### 拖放文件
+支持将图像文件直接拖放到应用窗口中进行添加。
+
+### 加载图像预览
+在选择或拖放图像文件后，会显示缩略图预览。
+
+### 压缩图像
+选择图像文件后，点击“压缩图像”按钮，选择输出文件夹，即可对图像进行压缩处理。压缩过程中会显示进度条和处理状态。
+
+### 清空图像
+点击“清空”按钮，可以清除已选择的图像文件。
+
+## 代码结构
+- `select_files` 函数：用于处理通过浏览选择文件的操作。
+- `drop` 函数：处理拖放文件的操作。
+- `compress_images` 函数：进行图像压缩的主要逻辑。
+- `load_image` 函数：加载图像并生成缩略图。
+- `clear_images` 函数：清空已选择的图像。
+
+## 运行代码
+直接运行主文件即可启动图像压缩器应用。
 
 ## 图片
 
-![image-20240627225629008](https://alist.ksmlc.cn/d/Private/Cloudreve/图片/202406272256919.png)
+![image-20240627225629008](https://alist.ksmlc.cn/d/Private/OnedriveE5/Image/202406272256919.png)
+
+![1](https://alist.ksmlc.cn/d/Private/OnedriveE5/Image/202407181411390.png)
